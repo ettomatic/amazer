@@ -8,14 +8,15 @@ class Builder
 
   private
 
-  def open_doors(room, remaining)
-    if remaining > 0
+  def open_doors(room, size)
+    walked = 1
+    while walked < size
       target = room.random_target
       if target.doors.empty?
         room.open_door_with(target)
-        remaining -= 1
+        walked += 1
       end
-      open_doors(target, remaining)
+      room = target
     end
   end
 end
