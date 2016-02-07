@@ -1,17 +1,19 @@
 require_relative 'room'
+require_relative 'builder'
 
 class Maze
   attr_reader :resolution
 
-  def initialize(resolution)
+  def initialize(resolution, builder: nil)
     @resolution = resolution
-  end
-
-  def display
-    #...
+    @builder    = builder || Builder.new
   end
 
   def build
+    @builder.build(self)
+  end
+
+  def display
     #...
   end
 

@@ -3,8 +3,10 @@ require 'spec_helper'
 describe Maze do
   subject { described_class.new(10) }
 
-  it 'produces a matrix representing a maze of an exact size' do
-    expect(subject.size).to eq 100
+  describe '#size' do
+    it 'returns the number of rooms composing the maze' do
+      expect(subject.size).to eq 100
+    end
   end
 
   describe '#[]' do
@@ -30,6 +32,12 @@ describe Maze do
     it 'produces rooms structured as an array of arrays' do
       expect(subject.rooms.size).to eq(10)
       expect(subject.rooms[0].size).to eq(10)
+    end
+  end
+
+  describe '#build' do
+    it 'return the built maze ready to be explored' do
+      expect(subject.build).to be_a(Maze)
     end
   end
 end
