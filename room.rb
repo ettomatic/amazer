@@ -6,6 +6,7 @@ class Room
     @x     = x
     @y     = y
     @maze  = maze
+    @doors = {}
   end
 
   def random_target
@@ -20,6 +21,11 @@ class Room
       a << :south if @y < maze.resolution - 1
       a << :west  if @x.between?(1, maze.resolution - 1)
     end
+  end
+
+  def open_door_with(room)
+    @doors[room] = 1
+    room.doors[self] = 1
   end
 
   private
