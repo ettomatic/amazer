@@ -2,7 +2,7 @@
 class Builder
   def build(maze)
     starting_room = maze.random_room
-    open_doors(starting_room, maze.size - 1)
+    open_doors(starting_room, maze.size)
     maze
   end
 

@@ -23,8 +23,19 @@ class Room
     end
   end
 
+  def available_doors
+    d = []
+    @doors.each do |door, _|
+      d << :north if door == north
+      d << :east  if door == east
+      d << :south if door == south
+      d << :west  if door == west
+    end
+    d
+  end
+
   def open_door_with(room)
-    @doors[room] = 1
+    @doors[room]     = 1
     room.doors[self] = 1
   end
 
