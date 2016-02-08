@@ -2,12 +2,17 @@ module Amazer
   class Room
     attr_reader :maze, :x, :y
     attr_accessor :doors
+    attr_accessor :on_exit_path
 
     def initialize(x, y, maze)
       @x     = x
       @y     = y
       @maze  = maze
       @doors = {}
+    end
+
+    def coordinates
+      [x, y].join(',')
     end
 
     def random_target

@@ -46,9 +46,15 @@ module Amazer
         'S'
       elsif room.exit?
         'E'
+      elsif room.on_exit_path
+        green('·')
       else
         ' '
       end
+    end
+
+    def green(s)
+      "\e[32m#{s}\e[0m"
     end
   end
 end

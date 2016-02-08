@@ -7,7 +7,7 @@ module Amazer
 
     describe '#to_s' do
       it 'outputs a text representation of the maze' do
-        puts subject.to_s(maze)
+        puts subject.to_s(maze.solve)
         expect(subject.to_s(maze)).to be_a(String)
       end
 

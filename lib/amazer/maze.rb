@@ -6,6 +6,7 @@ module Amazer
       @resolution = resolution
       @builder    = builder || Builder.new
       @output     = output  || Console.new
+      @solver     = Solver.new
     end
 
     def build
@@ -17,7 +18,7 @@ module Amazer
     end
 
     def solve
-      #....
+      @solver.solve(self)
     end
 
     def size
@@ -43,6 +44,14 @@ module Amazer
           Room.new(x, y, self)
         end
       end
+    end
+
+    def start
+      self[0,0]
+    end
+
+    def exit
+      self[resolution - 1, resolution - 1]
     end
   end
 end
