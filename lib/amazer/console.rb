@@ -25,10 +25,11 @@ module Amazer
     end
 
     def draw_east_wall(room)
+      i = room_content(room)
       if room.available_doors.include?(:east)
-        '    '
+        " #{i}  "
       else
-        '   |'
+        " #{i} |"
       end
     end
 
@@ -37,6 +38,16 @@ module Amazer
         '+   '
       else
         '+---'
+      end
+    end
+
+    def room_content(room)
+      if room.start?
+        'S'
+      elsif room.exit?
+        'E'
+      else
+        ' '
       end
     end
   end

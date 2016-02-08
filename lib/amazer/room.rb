@@ -40,6 +40,14 @@ module Amazer
       room.doors[self] = 1
     end
 
+    def start?
+      x == 0 && y == 0
+    end
+
+    def exit?
+      x == maze.resolution - 1 && y == maze.resolution - 1
+    end
+
     private
 
     def north
