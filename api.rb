@@ -1,12 +1,16 @@
 require 'sinatra/base'
 
 class Api < Sinatra::Base
-  get '/maze' do
+  get '/maze/random' do
     size = params_size || 10
-    out = Amazer::Maze.new(size).build
-    s = "<pre>\n"
-    s << out.display
-    s << '</pre>'
+    maze = Amazer::Maze.new(size).build
+    if show_exit_path?
+      maze.solve
+    end
+
+    output = "<pre>\n"
+    output << maze.display
+    output << '</pre>'
   end
 
   get '/heartbeat' do
@@ -14,6 +18,10 @@ class Api < Sinatra::Base
   end
 
   private
+
+  def show_exit_path?
+    params[:solution] && params[:solution] == 'true'
+  end
 
   def params_size
     params[:size] && params[:size].to_i

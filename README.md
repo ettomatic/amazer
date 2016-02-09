@@ -17,9 +17,9 @@ Use this command to run the test suite:
 bundle exec rspec
 ```
 
-# Endpoints
+# Usage
 
-`/maze` generates a radom maze
+`/maze/random` generates a radom maze
 
 ```
 $ curl http://localhost:9292/maze
@@ -46,9 +46,8 @@ $ curl http://localhost:9292/maze
 |               |                     E |
 +---+---+---+---+---+---+---+---+---+---+
 </pre>
+
 ```
 
-##Params
-
-- `size` Defaults to 10, will set the resolution of the maze eg `/maze?size=6` will produce a 36 rooms maze.
-- `solution` Defaults to false, `maze/?solution=true` will show the path to solve the maze (TBD)
+- `size` Defaults to 10, will set the resolution of the maze eg `/maze/random?size=6` will produce a 36 rooms maze.
+- `solution` Defaults to false, `maze/random?solution=true` will show the path to solve the maze.
