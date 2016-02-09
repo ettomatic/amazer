@@ -1,6 +1,10 @@
 require 'sinatra/base'
 
 class Api < Sinatra::Base
+  get '/maze' do
+    redirect '/maze/random', 301
+  end
+
   get '/maze/random' do
     size = params_size || 10
     maze = Amazer::Maze.new(size).build

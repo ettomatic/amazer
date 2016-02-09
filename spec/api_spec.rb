@@ -16,13 +16,18 @@ describe '/maze/random' do
   it 'can passed a size param' do
     get '/maze/random?size=6'
     expect(last_response).to be_ok
-    puts last_response.body
   end
 
   it 'can be passed a solution param' do
     get '/maze/random?solution=true'
     expect(last_response).to be_ok
-    puts last_response.body
+  end
+end
+
+describe '/maze' do
+  it 'redirects to /maze/random' do
+    get '/maze?solution=true'
+    expect(last_response.location).to eq 'http://example.org/maze/random'
   end
 end
 
