@@ -27,7 +27,6 @@ module Amazer
       return acc if queue.empty?
 
       batch = []
-
       queue.each do |room|
         room.doors.each do |r, _|
           next if acc[r]

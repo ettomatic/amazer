@@ -1,5 +1,4 @@
 module Amazer
-  # Or maybe it should be called Digger, this is what it does..
   class Builder
     def build(maze)
       starting_room = maze.random_room

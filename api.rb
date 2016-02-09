@@ -12,9 +12,8 @@ class Api < Sinatra::Base
       maze.solve
     end
 
-    output = "<pre>\n"
-    output << maze.display
-    output << '</pre>'
+    @content = maze.display
+    erb output
   end
 
   get '/heartbeat' do
@@ -22,6 +21,21 @@ class Api < Sinatra::Base
   end
 
   private
+
+  def output
+<<-EOT
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>A random maze</title>
+  </head>
+  <body>
+    <pre><%= @content %></pre>
+  </body>
+</html>
+EOT
+  end
 
   def show_exit_path?
     params[:solution] && params[:solution] == 'true'
